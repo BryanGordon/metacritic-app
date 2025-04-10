@@ -1,40 +1,83 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import Constants from 'expo-constants'
+import { useEffect, useState } from 'react'
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { gamesData } from './lib/metacritic'
 // import icon from './assets/icon.png'
 
-export default function App() {
+export default function App () {
+  const [games, setGames] = useState([])
+
+  useEffect(() => {
+    gamesData().then((games) => {
+      setGames(games)
+    })
+  }, [])
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
-      <Image 
-        source={{uri: 'https://www.metacritic.com/a/img/catalog/provider/6/3/6-1-4763-13.jpg'}} 
-        style={{width: 215, height: 294}}
-      />
-      <Text style={{color:'white'}}>Open up App.js to start working on your app!</Text>
-      <Text style={{color:'white'}}>Nuevo texto de ejemplo</Text>
-      <Text style={{color:'white'}}>Funciona perfecto</Text>
-      <Button 
-        color={'grey'}
-        title='No tengo estilos' 
-        onPress={() => alert('Pulsacion')}
-      />
+      <ScrollView>
+      {
+        games.map((game) => (
+          <View key={game.id} style={styles.card}>
+            <Image
+              source={{ uri: game.thumbnail }}
+              style={styles.imageCard}
+            />
+            <Text style={styles.titleCard}>
+              {game.title}
+            </Text>
+            <Text style={styles.descriptionCard}>
+              {game.short_description}
+            </Text>
 
-      <TouchableHighlight
-        onPress={() => alert('Hola boton 2')}
-        underlayColor={'#09f'}
-        style={{marginTop:30, backgroundColor:'#333B2F', padding:15, borderRadius:7}}
-      >
-        <Text style={{color:'white'}}>Boton customizable</Text>
-      </TouchableHighlight>
+            <Text style={styles.genreCard}>
+              {game.genre}
+            </Text>
+          </View>
+        ))
+      }
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: Constants.statusBarHeight,
+    padding: 12,
     flex: 1,
     backgroundColor: '#000',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
-});
+
+  card: {
+    marginBottom: 42
+  },
+
+  imageCard: {
+    width: 100,
+    height: 147,
+    borderRadius: 10
+  },
+
+  titleCard: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginTop: 10
+  },
+  
+  descriptionCard: {
+    fontSize: 16,
+    color: '#eee'
+  },
+  
+  genreCard: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'purple',
+    marginBottom: 10
+  }
+})
