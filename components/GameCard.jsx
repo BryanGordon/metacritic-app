@@ -2,12 +2,12 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 
 export function Gamecard ({game}) {
   return (
-   <View style={styles.card}>
+   <View className='bg-pink-400'>
                <Image
                  source={{ uri: game.thumbnail }}
                  style={styles.imageCard}
                />
-               <Text style={styles.titleCard}>
+               <Text className='text-red-900 text-2xl'>
                  {game.title}
                </Text>
                <Text style={styles.descriptionCard}>
