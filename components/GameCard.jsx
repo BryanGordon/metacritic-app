@@ -2,21 +2,23 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 
 export function Gamecard ({game}) {
   return (
-   <View className='bg-pink-400'>
+   <View className='flex-row bg-slate-500/10 p-4 rounded-xl gap-4 mb-10'>
                <Image
                  source={{ uri: game.thumbnail }}
                  style={styles.imageCard}
                />
-               <Text className='text-red-900 text-2xl'>
+               <View>
+               <Text style={styles.titleCard}>
                  {game.title}
                </Text>
                <Text style={styles.descriptionCard}>
-                 {game.short_description}
+                 {game.short_description.slice(0, 100)}...
                </Text>
    
                <Text style={styles.genreCard}>
                  {game.genre}
                </Text>
+               </View>
    </View>
   )
 }
@@ -36,12 +38,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#fff',
-    marginTop: 10
+    marginTop: 10,
+    marginBottom: 4
   },
   
   descriptionCard: {
+    marginTop: 8,
     fontSize: 16,
-    color: '#eee'
+    color: '#eee',
+    flexShrink: 1
   },
   
   genreCard: {
