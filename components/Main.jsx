@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'expo-router';
-import { View, ActivityIndicator, FlatList, StyleSheet } from 'react-native';
+import { View, ActivityIndicator, FlatList, StyleSheet, Pressable } from 'react-native';
 import { gamesData } from '../lib/metacritic'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Logo } from './Logo'
 import { AnimatedGameCard } from './AnimatedGameCard'
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { CircleInfoIcon } from '../components/Icons'
+
 
 export function Main () {
   const [games, setGames] = useState([])
@@ -17,11 +20,8 @@ export function Main () {
   }, [])
 
   return (
-    <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
-      <View style={styles.logoContainer}>
-        <Logo />
-      </View>
-      <Link href='/about' className='text-purple-500 text-lg my-1'>Ir al about</Link>
+    <View className='bg-black'>
+      
       {
         games.length === 0
           ? (<ActivityIndicator color='#8609E6' size='large' />)
