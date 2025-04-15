@@ -1,13 +1,18 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Link } from 'expo-router'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { styled } from 'nativewind'
 
 export function Gamecard ({game}) {
+  const StyledPressable = styled(Pressable)
   return (
-   <View className='flex-row bg-slate-500/10 p-4 rounded-xl gap-4 mb-10'>
+    <Link asChild href={`/${game.id}`}>
+   <StyledPressable className='active:opacity-60 border border-black active:border-white/50 mb-2 bg-gray-500/10 rounded-xl p-4'>
+   <View className='flex-row gap-4'>
                <Image
                  source={{ uri: game.thumbnail }}
                  style={styles.imageCard}
                />
-               <View>
+               <View className='flex-shrink'>
                <Text style={styles.titleCard}>
                  {game.title}
                </Text>
@@ -20,6 +25,8 @@ export function Gamecard ({game}) {
                </Text>
                </View>
    </View>
+    </StyledPressable>
+   </Link>
   )
 }
 
@@ -31,7 +38,7 @@ const styles = StyleSheet.create({
   imageCard: {
     width: 100,
     height: 147,
-    borderRadius: 10
+    borderRadius: 10,
   },
 
   titleCard: {
