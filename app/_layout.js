@@ -15,7 +15,7 @@ export default function Layout () {
           headerLeft: () => <Logo />,
           headerRight: () => (
             <Link asChild href='/about'>
-              <Pressable className='text-purple-500 text-lg my-1'>
+              <Pressable>
                 <CircleInfoIcon />
               </Pressable>
             </Link>
