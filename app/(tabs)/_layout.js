@@ -1,6 +1,5 @@
-import { Tabs } from 'expo-router';
-import { View } from 'react-native';
-import { HomeIcon, InfoIcon } from '../../components/Icons';
+import { Tabs } from 'expo-router'
+import { HomeIcon, InfoIcon } from '../../components/Icons'
 
 export default function TabsLayout () {
   return (
