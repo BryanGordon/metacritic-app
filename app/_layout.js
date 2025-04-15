@@ -1,5 +1,5 @@
 import { Link, Stack } from 'expo-router'
-import { View, Text, Pressable } from 'react-native'
+import { View, Pressable } from 'react-native'
 import { Logo } from '../components/Logo'
 import { CircleInfoIcon } from '../components/Icons'
 
@@ -14,11 +14,11 @@ export default function Layout () {
           headerTitle: '',
           headerLeft: () => <Logo />,
           headerRight: () => (
-                  <Link asChild href='/about'>
-                    <Pressable className='text-purple-500 text-lg my-1'>
-                      <CircleInfoIcon />
-                    </Pressable>
-                  </Link>
+            <Link asChild href='/about'>
+              <Pressable className='text-purple-500 text-lg my-1'>
+                <CircleInfoIcon />
+              </Pressable>
+            </Link>
           )
         }}
       />
