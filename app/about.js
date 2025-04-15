@@ -1,6 +1,5 @@
 import { Link } from 'expo-router'
 import { Pressable, ScrollView, Text } from 'react-native'
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { HomeIcon } from '../components/Icons'
 
 export default function About () {

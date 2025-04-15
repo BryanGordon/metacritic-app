@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { Animated } from 'react-native'
 import { Gamecard } from './GameCard'
 
-export function AnimatedGameCard ({game, index}) {
+export function AnimatedGameCard ({ game, index }) {
   const opacity = useRef(new Animated.Value(0)).current
 
   useEffect(() => {
